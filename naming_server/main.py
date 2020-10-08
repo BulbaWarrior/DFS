@@ -1,5 +1,6 @@
 import socket
-from initialization import ProbeListener, StorageManager, ClientListener
+from initialization import ProbeListener, StorageManager
+from client_management import ClientListener
 
 INIT_PORT = 1337
 TALK_PORT = 1338
