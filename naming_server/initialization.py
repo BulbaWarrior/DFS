@@ -26,7 +26,7 @@ class StorageManager(Thread):
         
         super().__init__(daemon=True)
         self.socket = socket
-        self.servers = []
+        self.servers = {}
 
         
     def run(self):
@@ -35,7 +35,7 @@ class StorageManager(Thread):
             conn, addr = self.socket.accept()
             print(f'{addr} connected')
 
-            self.servers.append(conn)
+            self.servers[addr] = conn
 
             
             

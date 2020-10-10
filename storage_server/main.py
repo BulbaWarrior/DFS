@@ -25,5 +25,8 @@ sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
 sock.connect((addr[0], TALK_PORT))
-sleep(10)
 sock.sendall(b'connected to you via tcp')
+
+while True:
+    data = sock.recv(1024)
+    print(data)
