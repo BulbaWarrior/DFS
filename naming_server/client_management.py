@@ -3,13 +3,6 @@ import os
 import argparse
 import random
 
-        
-    
-
-    
-
-
-
 
 # single_commands = ['init', 'ls']
 # unary_commands = ['create', 'read', 'rm', 'info', 'cd', 'rmdir']

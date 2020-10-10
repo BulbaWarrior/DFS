@@ -1,0 +1,14 @@
+version: "3.4"
+services:
+  naming_server:
+    build: ./naming_server
+    ports:
+      - "22322:22322"
+
+
+  storage_server:
+    build: ./storage_server
+    ports:
+      - "1338:1338"
+    depends_on:
+      - naming_server
