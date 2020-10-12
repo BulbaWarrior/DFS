@@ -6,7 +6,7 @@ A very simple implementation of a distributed file system
 
 To start the whole system on a local machine run
 
-`docker-compose up --build --scale storage_server=4`
+`docker-compose up --build --scale storage_server=4 -d`
 
 and then run 
 
@@ -14,6 +14,9 @@ and then run
 
 to start the client container and interact with the DFS
 
+`docker-compose down`
+
+to bring everything down
 
 ### Communication protocols
 
