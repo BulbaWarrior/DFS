@@ -33,7 +33,7 @@ sock.sendall(b'connected to you via tcp')
 
 ServerListener(sock).start()
 
-client_sock = socket.socket(socket.AF_INTET, socket.SOCK_STREAM)
+client_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client_sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 client_sock.bind(('', CLIENT_PORT))
 client_sock.listen(5)
