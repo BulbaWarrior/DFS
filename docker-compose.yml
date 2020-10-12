@@ -11,8 +11,10 @@ services:
     depends_on:
       - naming_server
 
+
   client:
-    image: ubuntu:latest
+    build: ./client
+    depends_on:
+      - naming_server
     volumes:
-      - ./ ./
-    command: bash
+      - /tmp/files /files

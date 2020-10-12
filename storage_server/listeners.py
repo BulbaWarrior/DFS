@@ -2,6 +2,7 @@ from threading import Thread
 import argparse
 import os
 
+
 parser = argparse.ArgumentParser()
 parser.add_argument('command')
 parser.add_argument('infile', nargs='?')
@@ -46,12 +47,40 @@ class ServerListener(Thread):
 class ClientListener(Thread):
 
     def pull(self, args):
-        pass
+        if not os.path.isfile(args.infile):
+            print("file to write does not exist")
+            return
+
+        fd = open(args.infile, 'w')
+        self.connection.sendall('ready')
+
+        while True:
+            data = self.connection.recv(1024)
+            if not data: # connection closed
+                break
+            fd.write(data)
+
+        fd.close()
+        self.connection.close()
+
+
 
     def push(self, args):
-        pass
+        if not os.file(args.infile):
+            print("file to read does not exist")
+            return
+        fd = open(args.infile, 'r')
+        while True:
+            chunk = fd.read(1024)
+            if not chunk: # file fully read
+                break
+            self.connection.sendall(chunk)
+                
+        fd.close()
+        self.connection.close()
 
     def info(self, args):
+        
         pass
 
     def __init__(self, connection):

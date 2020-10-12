@@ -59,8 +59,9 @@ class ClientListener(Thread):
                 print(str(addr))
                 if addr not in addrs:
                     break
-                
-            full_name = fd.name + str(addr)
+
+            salt = random.randint(0, 65536)
+            full_name = fd.name + str(addr[0]) + str(salt)
             storage_name = str(hash(full_name.encode()))
             fd.write(str(addr) + '_' + storage_name + '\n')
             message = 'create ' + storage_name
